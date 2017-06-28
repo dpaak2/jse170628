@@ -1,0 +1,7 @@
+package com.hanbit.oop.service;
+
+public class TaxCalc {
+	public void taxCalc() {
+		
+	}
+}

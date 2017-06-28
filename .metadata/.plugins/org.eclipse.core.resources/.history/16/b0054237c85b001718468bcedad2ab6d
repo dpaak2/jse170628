@@ -1,0 +1,66 @@
+package com.hanbit.oop.controller;
+
+import java.util.Scanner;
+
+import com.hanbit.oop.service.BmiService;
+
+public class BmiController {
+	public static void main(String[] args) {
+		/* Stream을 만드는데 0 은 종료 1은 시작 */
+		Scanner s = new Scanner(System.in);
+		BmiService service= new BmiService();
+		
+		while (true) {
+			System.out.println("실행할 동작을 입력하여 주세요 0.STOP , 1.BMI , 2.TAX , 3PLUS , 4.MINUS ");
+			switch (s.next()) {
+			case "0":
+				System.out.println("system close");
+				return;
+			case "1":
+				service.bmiService();
+				break;
+			case "2":
+				System.out.print("Name: ");
+				String name = s.next();
+				System.out.print("Salary: ");
+				int salary = s.nextInt();
+				double taxRate = 0;
+
+				if (88000 < salary) {
+					taxRate = 0.35;
+				} else if (4600 < salary) {
+					taxRate = 0.26;
+				} else if (1200 < salary) {
+					taxRate = 0.17;
+				} else {
+					taxRate = 0.08;
+				}
+				// ()?;:
+
+				  System.out.print("***********************************\n");
+				  System.out.print("| 이름 | 연봉 | 세율 | 납부할 세금 |\n");
+			      System.out.print("-----------------------------------\n");
+    System.out.print(String.format("| %s 님| %d 만원 | %f | %d 만원 | \n",name,salary,taxRate,(int)(salary*taxRate)));
+	              System.out.print("*********************************** \n");
+				break;
+			case "3":
+				System.out.print("계산기\n");
+				System.out.print("첫번째 숫자 입력: \n");
+				int firstNumber = s.nextInt();
+				System.out.print("두번째 숫자 입력: \n");
+				int secondNumber = s.nextInt();
+				int result2 = firstNumber + secondNumber;
+				System.out.print("Result: " + result2);
+				break;
+			case "4":
+				System.out.print("Frist Number: \n");
+				int a = s.nextInt();
+				System.out.print("Second Number: \n");
+				int b = s.nextInt();
+				int c = a - b;
+				System.out.print("결과:" + c+"\n");
+				break;
+			}
+		}
+	}
+}
