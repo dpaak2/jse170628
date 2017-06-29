@@ -1,11 +1,8 @@
 package com.hanbit.oop.controller;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
-import java.util.Spliterator;
 
-import com.hanbit.oop.service.BmiService;
+import com.hanbit.oop.service.CalcService;
 import com.hanbit.oop.service.GradeReport;
 import com.hanbit.oop.service.LeapYear;
 import com.hanbit.oop.service.TaxCalc;
@@ -15,7 +12,7 @@ public class Controller {
 	public static void main(String[] args) {
 		/* Stream을 만드는데 0 은 종료 1은 시작 */
 		Scanner s = new Scanner(System.in);
-		BmiService service= new BmiService();
+		CalcService service= new CalcService();
 		TaxCalc tax=new TaxCalc();
 		TimeCal timeCal=new TimeCal();
 		LeapYear leapYear=new LeapYear();
@@ -32,7 +29,7 @@ public class Controller {
 				double height=s.nextDouble()/100;
 				System.out.print("insert your weight: \n");
 				double weight=s.nextDouble();
-				String result= service.execute(height,weight);
+				String result= service.calcBmi(height,weight);
 				System.out.print("당신은 "+result);
 				break;
 			case "2":
@@ -55,16 +52,16 @@ public class Controller {
 				int firstNumber = s.nextInt();
 				System.out.print("두번째 숫자 입력: \n");
 				int secondNumber = s.nextInt();
-				int result2 = firstNumber + secondNumber;
+				int result2 = Integer.valueOf(service.calcPlus(firstNumber,secondNumber));
 				System.out.print("Result: " + result2);
 				break;
 				
 			case "4":
 				System.out.print("Frist Number: \n");
-				int a = s.nextInt();
+				String a = s.next();
 				System.out.print("Second Number: \n");
-				int b = s.nextInt();
-				int c = a - b;
+				String b = s.next();
+				int c = Integer.valueOf(service.clacMinus(a,b));
 				System.out.print("결과:" + c+"\n");
 				break;
 			case "5": 
